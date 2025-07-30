@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Thompson - DevOps Engineer</title>
+    <meta name="description" content="Mid-level DevOps Engineer specializing in CI/CD pipelines, AWS cloud infrastructure, and Kubernetes orchestration">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+        <span class="theme-icon">🌙</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">AT</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-background">
+            <div class="terminal-animation"></div>
+            <div class="pipeline-visual">
+                <div class="pipeline-node"></div>
+                <div class="pipeline-node"></div>
+                <div class="pipeline-node"></div>
+                <div class="pipeline-connection"></div>
+                <div class="pipeline-connection"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-glass">
+                <h1 class="hero-title">
+                    <span class="typing-text">DevOps Engineer.</span>
+                    <span class="typing-text">CI/CD Optimizer.</span>
+                    <span class="typing-text">Cloud-native Practitioner.</span>
+                </h1>
+                <p class="hero-subtitle">Building scalable automation across AWS, GitHub Actions, and Kubernetes.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn--primary glass-btn">
+                        <span>Download Resume</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/alexthompson" target="_blank" class="btn btn--outline glass-btn">
+                        <span>View GitHub</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-summary glass-card fade-in">
+                    <p>Mid-level DevOps Engineer with 4 years of experience in implementing production-grade CI/CD pipelines, managing cloud infrastructure (AWS), and container orchestration using Kubernetes. I specialize in delivering secure, observable, and automated platforms that enable rapid development cycles.</p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-item glass-card fade-in">
+                        <span class="highlight-icon">🚀</span>
+                        <span class="highlight-text">15+ pipelines optimized across teams</span>
+                    </div>
+                    <div class="highlight-item glass-card fade-in">
+                        <span class="highlight-icon">☁️</span>
+                        <span class="highlight-text">3+ AWS environments migrated to IaC</span>
+                    </div>
+                    <div class="highlight-item glass-card fade-in">
+                        <span class="highlight-icon">🔒</span>
+                        <span class="highlight-text">Implemented security scanning via CodeQL/Snyk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Skills Matrix</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category glass-card fade-in">
+                    <h3 class="skill-category-title">CI/CD</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">GitHub Actions</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Jenkins</span>
+                            <span class="skill-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card fade-in">
+                    <h3 class="skill-category-title">Cloud & IaC</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">AWS (ECS, Lambda)</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Terraform</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CloudFormation</span>
+                            <span class="skill-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card fade-in">
+                    <h3 class="skill-category-title">Containers</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Kubernetes</span>
+                            <span class="skill-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card fade-in">
+                    <h3 class="skill-category-title">Monitoring</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Prometheus</span>
+                            <span class="skill-level intermediate">Intermediate</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Grafana</span>
+                            <span class="skill-level intermediate">Intermediate</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CloudWatch</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card fade-in">
+                    <h3 class="skill-category-title">Scripting</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Bash</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category glass-card fade-in">
+                    <h3 class="skill-category-title">Dev Tools</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">GitHub</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">GitLab</span>
+                            <span class="skill-level intermediate">Intermediate</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">VSCode</span>
+                            <span class="skill-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card glass-card fade-in">
+                    <h3 class="project-title">Multi-Environment CI/CD Pipeline</h3>
+                    <p class="project-description">Designed and implemented a comprehensive GitHub Actions workflow supporting development, staging, and production environments with automated testing, security scanning, and deployment strategies.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS ECS</span>
+                        <span class="tech-tag">Terraform</span>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Reduced deployment time by 70% and increased deployment frequency to 15+ per week
+                    </div>
+                    <a href="https://github.com/alexthompson/cicd-pipeline" target="_blank" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+                <div class="project-card glass-card fade-in">
+                    <h3 class="project-title">AWS Infrastructure Automation</h3>
+                    <p class="project-description">Built Infrastructure as Code using Terraform to provision and manage scalable web application infrastructure including VPC, ECS clusters, RDS, and monitoring solutions.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">CloudWatch</span>
+                        <span class="tech-tag">Route53</span>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Automated provisioning of 3 production environments, reducing setup time from days to hours
+                    </div>
+                    <a href="https://github.com/alexthompson/aws-terraform-infra" target="_blank" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+                <div class="project-card glass-card fade-in">
+                    <h3 class="project-title">Kubernetes Cluster Management</h3>
+                    <p class="project-description">Orchestrated containerized applications using Kubernetes with comprehensive monitoring, logging, and auto-scaling capabilities for high-availability production workloads.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Helm</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Grafana</span>
+                        <span class="tech-tag">ELK Stack</span>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Achieved 99.9% uptime with automated scaling supporting 10x traffic spikes
+                    </div>
+                    <a href="https://github.com/alexthompson/k8s-cluster-setup" target="_blank" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+                <div class="project-card glass-card fade-in">
+                    <h3 class="project-title">Security-First DevOps</h3>
+                    <p class="project-description">Integrated comprehensive security scanning and compliance automation into CI/CD pipelines using SAST, DAST, and container scanning tools with policy-as-code enforcement.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CodeQL</span>
+                        <span class="tech-tag">Snyk</span>
+                        <span class="tech-tag">OWASP ZAP</span>
+                        <span class="tech-tag">Checkov</span>
+                        <span class="tech-tag">OPA</span>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Identified and resolved 150+ security vulnerabilities before production deployment
+                    </div>
+                    <a href="https://github.com/alexthompson/secure-devops" target="_blank" class="project-link">
+                        View on GitHub
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15,3 21,3 21,9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CI/CD Pipeline Showcase -->
+    <section id="pipeline" class="pipeline-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">CI/CD Pipeline Showcase</h2>
+            </div>
+            <div class="pipeline-showcase glass-card fade-in">
+                <div class="pipeline-flow">
+                    <div class="pipeline-stage" data-tooltip="Developer commits trigger automated workflows">
+                        <div class="stage-icon">💻</div>
+                        <div class="stage-name">Code</div>
+                        <div class="stage-progress"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-tooltip="Compile, package, and create artifacts">
+                        <div class="stage-icon">🔨</div>
+                        <div class="stage-name">Build</div>
+                        <div class="stage-progress"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-tooltip="Unit, integration, and security testing">
+                        <div class="stage-icon">🧪</div>
+                        <div class="stage-name">Test</div>
+                        <div class="stage-progress"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-tooltip="Automated deployment to staging/production">
+                        <div class="stage-icon">🚀</div>
+                        <div class="stage-name">Deploy</div>
+                        <div class="stage-progress"></div>
+                    </div>
+                    <div class="pipeline-arrow">→</div>
+                    <div class="pipeline-stage" data-tooltip="Real-time monitoring and alerting">
+                        <div class="stage-icon">📊</div>
+                        <div class="stage-name">Monitor</div>
+                        <div class="stage-progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-in">Get In Touch</h2>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form glass-card fade-in" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary glass-btn btn--full-width">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading hidden">Sending...</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                        </svg>
+                    </button>
+                </form>
+                <div class="contact-info fade-in">
+                    <div class="contact-item glass-card">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <a href="mailto:alex.thompson@email.com">alex.thompson@email.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item glass-card">
+                        <div class="contact-icon">🐙</div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/alexthompson" target="_blank">github.com/alexthompson</a>
+                        </div>
+                    </div>
+                    <div class="contact-item glass-card">
+                        <div class="contact-icon">🔗</div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <a href="https://linkedin.com/in/alexthompson" target="_blank">linkedin.com/in/alexthompson</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alex Thompson. Crafted with ❤️ and DevOps precision.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top-btn glass-btn hidden" aria-label="Scroll to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18,15 12,9 6,15"></polyline>
+        </svg>
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
