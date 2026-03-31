@@ -207,9 +207,10 @@ function initContactForm() {
     const btn = form.querySelector('.btn-submit');
     const btnText = btn.querySelector('.btn-text');
     const btnLoading = btn.querySelector('.btn-loading');
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
+
+    const name = form.querySelector('#name').value.trim();
+    const email = form.querySelector('#email').value.trim();
+    const message = form.querySelector('#message').value.trim();
 
     if (!name || !email || !message) {
       showNotification('Please fill in all fields.', 'error');
@@ -224,21 +225,21 @@ function initContactForm() {
     btnLoading.classList.remove('hidden');
     btn.disabled = true;
 
-    const formData = new FormData(form);
-    const res = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    });
-
-    if (!res.ok) throw new Error('Submission failed');
-
     try {
-      // fetch call above
+      const formData = new FormData(form);
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+
       showNotification('Message sent! I\'ll get back to you soon.', 'success');
       form.reset();
     } catch (err) {
-      showNotification('Something went wrong. Please try again.', 'error');
+      console.error('Form submission error:', err);
+      showNotification('Something went wrong. Please email me directly.', 'error');
     } finally {
       btnText.classList.remove('hidden');
       btnLoading.classList.add('hidden');
