@@ -224,14 +224,26 @@ function initContactForm() {
     btnLoading.classList.remove('hidden');
     btn.disabled = true;
 
-    // Simulate async submission
-    await new Promise(r => setTimeout(r, 1800));
+    const formData = new FormData(form);
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    });
 
-    showNotification('Message sent! I\'ll get back to you soon.', 'success');
-    form.reset();
-    btnText.classList.remove('hidden');
-    btnLoading.classList.add('hidden');
-    btn.disabled = false;
+    if (!res.ok) throw new Error('Submission failed');
+
+    try {
+      // fetch call above
+      showNotification('Message sent! I\'ll get back to you soon.', 'success');
+      form.reset();
+    } catch (err) {
+      showNotification('Something went wrong. Please try again.', 'error');
+    } finally {
+      btnText.classList.remove('hidden');
+      btnLoading.classList.add('hidden');
+      btn.disabled = false;
+    }
   });
 }
 
