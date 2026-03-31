@@ -509,7 +509,8 @@
       <h2 class="section-title fade-up">Let's build something reliable.</h2>
       <div class="contact-grid">
         <div class="contact-form-wrap fade-up">
-          <form id="contactForm" class="contact-form" novalidate>
+          <form id="contactForm" class="contact-form" method="POST" data-netlify="true" novalidate>
+            <input type="hidden" name="form-name" value="contact" />
             <div class="form-row">
               <div class="form-group">
                 <label for="name" class="form-label">Name</label>
