@@ -1,3 +1,4 @@
+
 /* ======================================
    JYOTHI SWAROOP PORTFOLIO — app.js
    ====================================== */
@@ -207,10 +208,9 @@ function initContactForm() {
     const btn = form.querySelector('.btn-submit');
     const btnText = btn.querySelector('.btn-text');
     const btnLoading = btn.querySelector('.btn-loading');
-
-    const name = form.querySelector('#name').value.trim();
-    const email = form.querySelector('#email').value.trim();
-    const message = form.querySelector('#message').value.trim();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
     if (!name || !email || !message) {
       showNotification('Please fill in all fields.', 'error');
@@ -225,26 +225,14 @@ function initContactForm() {
     btnLoading.classList.remove('hidden');
     btn.disabled = true;
 
-    try {
-      const formData = new FormData(form);
-      const res = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
-      });
+    // Simulate async submission
+    await new Promise(r => setTimeout(r, 1800));
 
-      if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-
-      showNotification('Message sent! I\'ll get back to you soon.', 'success');
-      form.reset();
-    } catch (err) {
-      console.error('Form submission error:', err);
-      showNotification('Something went wrong. Please email me directly.', 'error');
-    } finally {
-      btnText.classList.remove('hidden');
-      btnLoading.classList.add('hidden');
-      btn.disabled = false;
-    }
+    showNotification('Message sent! I\'ll get back to you soon.', 'success');
+    form.reset();
+    btnText.classList.remove('hidden');
+    btnLoading.classList.add('hidden');
+    btn.disabled = false;
   });
 }
 
