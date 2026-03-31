@@ -1,330 +1,596 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jyothi Swaroop- DevOps Engineer</title>
-    <meta name="description" content="Mid-level DevOps Engineer specializing in CI/CD pipelines, AWS cloud infrastructure, and Kubernetes orchestration">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jyothi Swaroop — Infrastructure Engineer & CI/CD Architect</title>
+  <meta name="description" content="DevOps Engineer specializing in CI/CD pipeline architecture, IaC with Terraform, and cloud automation across AWS, Azure and GCP." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light theme">
-        <span class="theme-icon">🌙</span>
-    </button>
 
-    <!-- Navigation -->
-    <nav class="nav-glass">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">JyothiSwaroop</a>
-            <ul class="nav-links">
-                <li><a href="#hero">Hero</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  <!-- Theme Toggle -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+    <span class="theme-icon">☀</span>
+  </button>
+
+  <!-- Navigation -->
+  <nav class="nav-glass" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">JS<span class="logo-dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-cta btn btn--primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag fade-up delay-0">
+        <span class="tag-dot"></span> Available for Opportunities
+      </div>
+      <h1 class="hero-title fade-up delay-1">
+        I build pipelines<br />
+        <span class="title-accent">that ship without fear.</span>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        DevOps Engineer with 4+ years engineering CI/CD systems at scale — cutting release cycles by 30%, slashing troubleshooting overhead by 40%, and turning infrastructure into reproducible, auditable code.
+      </p>
+      <div class="hero-chips fade-up delay-3">
+        <span class="chip">Jenkins → GitHub Actions</span>
+        <span class="chip">Terraform IaC</span>
+        <span class="chip">Docker · Kubernetes</span>
+        <span class="chip">DevSecOps</span>
+      </div>
+      <div class="hero-ctas fade-up delay-4">
+        <a href="#projects" class="btn btn--primary">
+          View Projects
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--outline">Get in Touch</a>
+        <a href="https://github.com/jyothiswaroopreddy08" target="_blank" rel="noopener" class="btn btn--ghost">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="hero-terminal fade-up delay-5">
+        <div class="terminal-bar"><span></span><span></span><span></span></div>
+        <div class="terminal-body" id="terminalBody"></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="section-label fade-up">About</div>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <h2 class="section-title">Reliability isn't luck — it's engineered.</h2>
+          <p>I started at Infosys in 2021 building a Python-based monitoring engine for Jenkins — not because anyone asked me to, but because I hated watching engineers lose hours to opaque pipeline failures. That instinct — fix the friction before it compounds — has defined how I work ever since.</p>
+          <p>Over the past 4 years I've led a full-scale migration of CI/CD infrastructure from Jenkins to GitHub Actions, standardized multi-cloud provisioning across AWS, Azure, and GCP using Terraform, and embedded security scanning directly into delivery pipelines. I mentor junior engineers, conduct code reviews, and believe the best DevOps work is invisible to the teams it enables.</p>
+          <p>I'm based in Nellore, Andhra Pradesh, currently at Infosys as a Technology Analyst — and I'm always interested in hard infrastructure problems worth solving.</p>
+          <div class="about-links">
+            <a href="mailto:jyothiswaroopreddymula@gmail.com" class="about-link">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              jyothiswaroopreddymula@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/jyothiswaroopreddy-mula/" target="_blank" rel="noopener" class="about-link">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div class="hero-background">
-            <div class="terminal-animation"></div>
-            <div class="pipeline-visual">
-                <div class="pipeline-node"></div>
-                <div class="pipeline-node"></div>
-                <div class="pipeline-node"></div>
-                <div class="pipeline-connection"></div>
-                <div class="pipeline-connection"></div>
+        <div class="about-cards fade-up delay-2">
+          <div class="about-stat-card">
+            <div class="stat-number" data-count="4">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat-number" data-count="30">0</div>
+            <div class="stat-label">% Faster Release Cycles</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat-number" data-count="40">0</div>
+            <div class="stat-label">% Less Troubleshooting</div>
+          </div>
+          <div class="about-stat-card">
+            <div class="stat-number" data-count="25">0</div>
+            <div class="stat-label">% Deployment Throughput Gain</div>
+          </div>
+          <div class="about-certs">
+            <div class="cert-badge">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+              <div>
+                <div class="cert-name">GitHub GH-200</div>
+                <div class="cert-sub">GitHub Actions Certified</div>
+              </div>
             </div>
+            <div class="cert-badge">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+              <div>
+                <div class="cert-name">Infosys Certified</div>
+                <div class="cert-sub">DevOps Professional</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="hero-content">
-            <div class="hero-glass">
-                <h1 class="hero-title">
-                    <span class="typing-text">DevOps Engineer.</span>
-                    <span class="typing-text">CI/CD Optimizer.</span>
-                </h1>
-                <p class="hero-subtitle">Pipelines that don’t break. Deployments that don’t wait..</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn--primary glass-btn">
-                        <span>Download Resume</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7,10 12,15 17,10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </a>
-                    <a href="https://github.com/jyothiswaroopreddy08" target="_blank" class="btn btn--outline glass-btn">
-                        <span>View GitHub</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="section-label fade-up">Skills</div>
+      <h2 class="section-title fade-up">Full-stack DevOps toolkit.</h2>
+      <div class="skills-grid">
+
+        <div class="skill-block fade-up delay-0">
+          <div class="skill-block-header">
+            <span class="skill-block-icon">⚙</span>
+            <span class="skill-block-title">CI/CD</span>
+          </div>
+          <div class="skill-tags">
+            <span class="stag stag--primary">GitHub Actions</span>
+            <span class="stag stag--primary">Jenkins</span>
+            <span class="stag">Pipeline Design</span>
+            <span class="stag">Release Automation</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <span>GitHub Actions</span>
+              <div class="bar"><div class="bar-fill" style="--w:95%"></div></div>
             </div>
+            <div class="skill-bar-item">
+              <span>Jenkins</span>
+              <div class="bar"><div class="bar-fill" style="--w:88%"></div></div>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">About Me</h2>
+        <div class="skill-block fade-up delay-1">
+          <div class="skill-block-header">
+            <span class="skill-block-icon">☁</span>
+            <span class="skill-block-title">Cloud & IaC</span>
+          </div>
+          <div class="skill-tags">
+            <span class="stag stag--cloud">AWS</span>
+            <span class="stag stag--cloud">Azure</span>
+            <span class="stag stag--cloud">GCP</span>
+            <span class="stag stag--primary">Terraform</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <span>Terraform</span>
+              <div class="bar"><div class="bar-fill" style="--w:92%"></div></div>
             </div>
-            <div class="about-content">
-                <div class="about-summary glass-card fade-in">
-                    <p>DevOps Engineer with 4 years of experience building CI/CD automation with GitHub Actions and managing production infrastructure on AWS. Focused on secure, scalable delivery pipelines that move code to cloud—fast and safely.</p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-item glass-card fade-in">
-                        <span class="highlight-icon">🚀</span>
-                        <span class="highlight-text">Migrated 40+ pipelines from Jenkins to GitHub Actions</span>
-                    </div>
-                    <div class="highlight-item glass-card fade-in">
-                        <span class="highlight-icon">🏗️</span>
-                        <span class="highlight-text">Standardized CI/CD and CT workflows across 250+ teams</span>
-                    </div>
-                    <div class="highlight-item glass-card fade-in">
-                        <span class="highlight-icon">🔒</span>
-                        <span class="highlight-text">Embedded security gates using CodeQL scanning</span>
-                    </div>
-                </div>
+            <div class="skill-bar-item">
+              <span>AWS</span>
+              <div class="bar"><div class="bar-fill" style="--w:85%"></div></div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Skills Matrix</h2>
+        <div class="skill-block fade-up delay-2">
+          <div class="skill-block-header">
+            <span class="skill-block-icon">🐳</span>
+            <span class="skill-block-title">Containers & Orchestration</span>
+          </div>
+          <div class="skill-tags">
+            <span class="stag stag--container">Docker</span>
+            <span class="stag stag--container">Kubernetes</span>
+            <span class="stag">Image Optimization</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <span>Docker</span>
+              <div class="bar"><div class="bar-fill" style="--w:90%"></div></div>
             </div>
-            <div class="skills-grid">
-                <div class="skill-category glass-card fade-in">
-                    <h3 class="skill-category-title">CI/CD</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">GitHub Actions</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Jenkins</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card fade-in">
-                    <h3 class="skill-category-title">Cloud & IaC</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">AWS (ECS, Lambda)</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Terraform</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card fade-in">
-                    <h3 class="skill-category-title">Containers</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card fade-in">
-                    <h3 class="skill-category-title">Scripting</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Bash</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">TypeScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category glass-card fade-in">
-                    <h3 class="skill-category-title">Dev Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">GitHub</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">VSCode</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-bar-item">
+              <span>Kubernetes</span>
+              <div class="bar"><div class="bar-fill" style="--w:78%"></div></div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Featured Projects</h2>
+        <div class="skill-block fade-up delay-3">
+          <div class="skill-block-header">
+            <span class="skill-block-icon">🔐</span>
+            <span class="skill-block-title">DevSecOps</span>
+          </div>
+          <div class="skill-tags">
+            <span class="stag stag--sec">SonarQube</span>
+            <span class="stag stag--sec">CodeQL</span>
+            <span class="stag stag--sec">Megalinter</span>
+            <span class="stag stag--sec">JFrog Xray</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <span>Static Analysis</span>
+              <div class="bar"><div class="bar-fill" style="--w:88%"></div></div>
             </div>
-            <div class="projects-grid">
-                <div class="project-card glass-card fade-in">
-                    <h3 class="project-title">mono-works</h3>
-                    <p class="project-description">mono-works is a GitHub mono-repo designed to centralize reusable CI/CD logic across multiple projects. Think of it as your internal DevOps toolkit — versioned, modular, and compliant.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">GitHub Actions</span>
-                        <span class="tech-tag">Shell</span>
-                        <span class="tech-tag">YAML</span>
-                        <span class="tech-tag">Node.js</span>
-                    </div>
-                    <div class="project-impact">
-                        <strong>Usecase:</strong> Organizations with 10+ microservices needing a centralized DevOps pipeline architecture that scales
-                    </div>
-                    <a href="https://github.com/jyothiswaroopreddy08/monoworks" target="_blank" class="project-link">
-                        View on GitHub
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15,3 21,3 21,9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-                <div class="project-card glass-card fade-in">
-                    <h3 class="project-title">codeql-secops</h3>
-                    <p class="project-description">codeql-secops is a post-processing action that filters and prioritizes CodeQL alerts introduced in the current pull request. The goal: surface actionable issues without alert fatigue.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">GitHub Actions</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">CodeQL</span>
-                        <span class="tech-tag">SARIF Json</span>
-                    </div>
-                    <div class="project-impact">
-                        <strong>Usecase:</strong> Teams doing daily PR-based scanning, wanting to reduce false positives and gate merges based on real risk.
-                    </div>
-                    <a href="https://github.com/jyothiswaroopreddy08/aws-terraform-infra" target="_blank" class="project-link">
-                        View on GitHub
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15,3 21,3 21,9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
+            <div class="skill-bar-item">
+              <span>Artifact Security</span>
+              <div class="bar"><div class="bar-fill" style="--w:80%"></div></div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- CI/CD Pipeline Showcase -->
-    <section id="pipeline" class="pipeline-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">CI/CD Pipeline Showcase</h2>
+        <div class="skill-block fade-up delay-4">
+          <div class="skill-block-header">
+            <span class="skill-block-icon">&lt;/&gt;</span>
+            <span class="skill-block-title">Scripting</span>
+          </div>
+          <div class="skill-tags">
+            <span class="stag stag--script">Python</span>
+            <span class="stag stag--script">Bash</span>
+            <span class="stag stag--script">PowerShell</span>
+            <span class="stag stag--script">Groovy</span>
+            <span class="stag stag--script">YAML</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <span>Python</span>
+              <div class="bar"><div class="bar-fill" style="--w:90%"></div></div>
             </div>
-            <div class="pipeline-showcase glass-card fade-in">
-                <div class="pipeline-flow">
-                    <div class="pipeline-stage" data-tooltip="Developer commits trigger automated workflows">
-                        <div class="stage-icon">💻</div>
-                        <div class="stage-name">Code</div>
-                        <div class="stage-progress"></div>
-                    </div>
-                    <div class="pipeline-arrow">→</div>
-                    <div class="pipeline-stage" data-tooltip="Compile, package, and create artifacts">
-                        <div class="stage-icon">🔨</div>
-                        <div class="stage-name">Build</div>
-                        <div class="stage-progress"></div>
-                    </div>
-                    <div class="pipeline-arrow">→</div>
-                    <div class="pipeline-stage" data-tooltip="Unit, integration, and security testing">
-                        <div class="stage-icon">🧪</div>
-                        <div class="stage-name">Test</div>
-                        <div class="stage-progress"></div>
-                    </div>
-                    <div class="pipeline-arrow">→</div>
-                    <div class="pipeline-stage" data-tooltip="Automated deployment to staging/production">
-                        <div class="stage-icon">🚀</div>
-                        <div class="stage-name">Deploy</div>
-                        <div class="stage-progress"></div>
-                    </div>
-                </div>
+            <div class="skill-bar-item">
+              <span>Bash / Shell</span>
+              <div class="bar"><div class="bar-fill" style="--w:87%"></div></div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Get In Touch</h2>
+        <div class="skill-block fade-up delay-5">
+          <div class="skill-block-header">
+            <span class="skill-block-icon">🔧</span>
+            <span class="skill-block-title">Observability & VCS</span>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Git</span>
+            <span class="stag">GitHub</span>
+            <span class="stag">MongoDB</span>
+            <span class="stag">Dashboard Design</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <span>Git / GitHub</span>
+              <div class="bar"><div class="bar-fill" style="--w:95%"></div></div>
             </div>
-            <div class="contact-content">
-                <form class="contact-form glass-card fade-in" id="contactForm">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn--primary glass-btn btn--full-width">
-                        <span class="btn-text">Send Message</span>
-                        <span class="btn-loading hidden">Sending...</span>
-                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22,2 15,22 11,13 2,9"></polygon>
-                        </svg>
-                    </button>
-                </form>
-                <div class="contact-info fade-in">
-                    <div class="contact-item glass-card">
-                        <div class="contact-icon">📧</div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <a href="mailto:jyothiswaroopreddymula@gmail.com">jyothiswaroopreddymula@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item glass-card">
-                        <div class="contact-icon">🐙</div>
-                        <div class="contact-details">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/jyothiswaroopreddy08" target="_blank">github.com/jyothiswaroopreddy08</a>
-                        </div>
-                    </div>
-                    <div class="contact-item glass-card">
-                        <div class="contact-icon">🔗</div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <a href="https://www.linkedin.com/in/jyothiswaroopreddy-mula/" target="_blank">linkedin.com/in/jyothiswaroopreddy-mula</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-bar-item">
+              <span>Monitoring</span>
+              <div class="bar"><div class="bar-fill" style="--w:82%"></div></div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Jyothi Swarroop. Crafted with ❤️ and DevOps precision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="section-label fade-up">Projects</div>
+      <h2 class="section-title fade-up">Real work. Real numbers.</h2>
+
+      <div class="projects-list">
+
+        <!-- Project 1 -->
+        <div class="project-row fade-up">
+          <div class="project-num">01</div>
+          <div class="project-body">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">Enterprise CI/CD Migration</h3>
+                <div class="project-subtitle">Jenkins → GitHub Actions at Infosys</div>
+              </div>
+              <div class="project-outcome">
+                <span class="outcome-pill">−30% release cycles</span>
+              </div>
+            </div>
+            <div class="project-detail">
+              <div class="project-challenge">
+                <div class="detail-label">Challenge</div>
+                <p>A legacy Jenkins estate was slowing delivery velocity and creating operational fragility. Pipeline failures were opaque, maintenance burden was high, and the toolchain couldn't scale alongside growing team needs.</p>
+              </div>
+              <div class="project-solution">
+                <div class="detail-label">Approach</div>
+                <p>Led a strategic end-to-end migration from Jenkins to GitHub Actions. Built reusable workflow templates, standardized environment configurations, and collaborated cross-functionally to align pipelines with developer workflows. Embedded automated testing gates and mentored junior engineers through the transition.</p>
+              </div>
+            </div>
+            <div class="project-stack">
+              <span class="tech-chip">GitHub Actions</span>
+              <span class="tech-chip">Jenkins</span>
+              <span class="tech-chip">YAML</span>
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">Bash</span>
+            </div>
+            <a href="https://github.com/jyothiswaroopreddy08/monoworks" target="_blank" rel="noopener" class="project-link">
+              View on GitHub →
+            </a>
+          </div>
         </div>
-    </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollTop" class="scroll-top-btn glass-btn hidden" aria-label="Scroll to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18,15 12,9 6,15"></polyline>
-        </svg>
-    </button>
+        <!-- Project 2 -->
+        <div class="project-row fade-up delay-1">
+          <div class="project-num">02</div>
+          <div class="project-body">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">Multi-Cloud IaC with Terraform</h3>
+                <div class="project-subtitle">Standardized provisioning across AWS, Azure & GCP</div>
+              </div>
+              <div class="project-outcome">
+                <span class="outcome-pill">Repeatable · Auditable</span>
+              </div>
+            </div>
+            <div class="project-detail">
+              <div class="project-challenge">
+                <div class="detail-label">Challenge</div>
+                <p>Infrastructure across multiple cloud providers was provisioned inconsistently, making environments difficult to reproduce and governance nearly impossible to enforce at scale.</p>
+              </div>
+              <div class="project-solution">
+                <div class="detail-label">Approach</div>
+                <p>Engineered end-to-end Infrastructure as Code using Terraform, standardizing multi-cloud provisioning workflows across AWS, Azure, and GCP. Created reusable module libraries ensuring predictable, repeatable deployment footprints and enabling infrastructure-as-a-pull-request workflows.</p>
+              </div>
+            </div>
+            <div class="project-stack">
+              <span class="tech-chip">Terraform</span>
+              <span class="tech-chip">AWS</span>
+              <span class="tech-chip">Azure</span>
+              <span class="tech-chip">GCP</span>
+              <span class="tech-chip">GitHub Actions</span>
+            </div>
+          </div>
+        </div>
 
-    <script src="app.js"></script>
+        <!-- Project 3 -->
+        <div class="project-row fade-up delay-2">
+          <div class="project-num">03</div>
+          <div class="project-body">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">Jenkins Pipeline Analytics Engine</h3>
+                <div class="project-subtitle">Python monitoring system with real-time MongoDB dashboards</div>
+              </div>
+              <div class="project-outcome">
+                <span class="outcome-pill">−40% troubleshooting effort</span>
+              </div>
+            </div>
+            <div class="project-detail">
+              <div class="project-challenge">
+                <div class="detail-label">Challenge</div>
+                <p>CI/CD pipeline failures at Infosys were diagnosed reactively. Engineers had no visibility into build performance trends, bottleneck patterns, or historical reliability metrics.</p>
+              </div>
+              <div class="project-solution">
+                <div class="detail-label">Approach</div>
+                <p>Designed and developed a Python-based monitoring engine integrated with Jenkins APIs to analyze pipeline performance in real time. Built MongoDB-backed dashboards surfacing actionable metrics — enabling proactive bottleneck detection and data-driven decisions. Automated workflow data collection, eliminating manual reporting overhead.</p>
+              </div>
+            </div>
+            <div class="project-stack">
+              <span class="tech-chip">Python</span>
+              <span class="tech-chip">Jenkins API</span>
+              <span class="tech-chip">MongoDB</span>
+              <span class="tech-chip">Dashboards</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-row fade-up delay-3">
+          <div class="project-num">04</div>
+          <div class="project-body">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">codeql-secops</h3>
+                <div class="project-subtitle">PR-scoped CodeQL alert filter to eliminate security noise</div>
+              </div>
+              <div class="project-outcome">
+                <span class="outcome-pill">DevSecOps · Zero alert fatigue</span>
+              </div>
+            </div>
+            <div class="project-detail">
+              <div class="project-challenge">
+                <div class="detail-label">Challenge</div>
+                <p>Static analysis produces too much noise. Teams were ignoring alerts because they couldn't distinguish issues introduced in the current PR from pre-existing ones in the codebase.</p>
+              </div>
+              <div class="project-solution">
+                <div class="detail-label">Approach</div>
+                <p>Built a GitHub Actions post-processing step that filters CodeQL SARIF output to surface only alerts introduced by the current pull request. Teams now see signal, not noise — merges can be gated on real risk, not alert count.</p>
+              </div>
+            </div>
+            <div class="project-stack">
+              <span class="tech-chip">TypeScript</span>
+              <span class="tech-chip">GitHub Actions</span>
+              <span class="tech-chip">CodeQL</span>
+              <span class="tech-chip">SARIF</span>
+            </div>
+            <a href="https://github.com/jyothiswaroopreddy08/aws-terraform-infra" target="_blank" rel="noopener" class="project-link">
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section id="impact" class="impact-section">
+    <div class="container">
+      <div class="section-label fade-up">Impact</div>
+      <h2 class="section-title fade-up">Numbers don't lie.</h2>
+      <div class="impact-grid">
+        <div class="impact-card fade-up delay-0">
+          <div class="impact-metric">
+            <span class="impact-num" data-count="30">0</span><span class="impact-unit">%</span>
+          </div>
+          <div class="impact-label">Faster Release Cycles</div>
+          <div class="impact-desc">Achieved after leading the Jenkins → GitHub Actions migration, with streamlined workflows and reduced operational overhead.</div>
+        </div>
+        <div class="impact-card fade-up delay-1">
+          <div class="impact-metric">
+            <span class="impact-num" data-count="25">0</span><span class="impact-unit">%</span>
+          </div>
+          <div class="impact-label">Deployment Throughput Increase</div>
+          <div class="impact-desc">Gained by operationalizing Docker containerization across the application delivery lifecycle and optimizing runtime systems.</div>
+        </div>
+        <div class="impact-card fade-up delay-2">
+          <div class="impact-metric">
+            <span class="impact-num" data-count="40">0</span><span class="impact-unit">%</span>
+          </div>
+          <div class="impact-label">Reduced Troubleshooting Effort</div>
+          <div class="impact-desc">Delivered through a scalable Python monitoring framework with real-time MongoDB dashboards and automated anomaly detection.</div>
+        </div>
+        <div class="impact-card fade-up delay-3">
+          <div class="impact-metric">
+            <span class="impact-num" data-count="15">0</span><span class="impact-unit">%</span>
+          </div>
+          <div class="impact-label">Fewer Post-Release Defects</div>
+          <div class="impact-desc">Result of automated cross-stack testing frameworks in Python, TypeScript and Bash, embedded as pipeline validation gates.</div>
+        </div>
+      </div>
+
+      <div class="timeline fade-up">
+        <h3 class="timeline-title">Career Timeline</h3>
+        <div class="timeline-list">
+          <div class="tl-item">
+            <div class="tl-date">Apr 2022 – Present</div>
+            <div class="tl-content">
+              <div class="tl-role">Technology Analyst · DevOps Engineer / SRE</div>
+              <div class="tl-company">Infosys Pvt Ltd — Bengaluru</div>
+              <p class="tl-desc">Led CI/CD migration, multi-cloud IaC, containerization, DevSecOps integration and team mentoring.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">Oct 2021 – Mar 2022</div>
+            <div class="tl-content">
+              <div class="tl-role">Senior Systems Engineer · DevOps Engineer</div>
+              <div class="tl-company">Infosys Pvt Ltd — Bengaluru</div>
+              <p class="tl-desc">Built Python monitoring engine for Jenkins, MongoDB dashboards, and automated workflow analytics.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2017 – 2021</div>
+            <div class="tl-content">
+              <div class="tl-role">B.Tech — Computer Science</div>
+              <div class="tl-company">N.B.K.R Institute of Science & Technology — Vidyanagar, Nellore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-label fade-up">Contact</div>
+      <h2 class="section-title fade-up">Let's build something reliable.</h2>
+      <div class="contact-grid">
+        <div class="contact-form-wrap fade-up">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="you@company.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-control" rows="5" placeholder="Tell me about the problem you're solving..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn-submit">
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loading hidden">Sending…</span>
+              <svg class="btn-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+            </button>
+          </form>
+        </div>
+        <div class="contact-info fade-up delay-2">
+          <a href="mailto:jyothiswaroopreddymula@gmail.com" class="contact-card">
+            <div class="contact-icon-wrap">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-label">Email</div>
+              <div class="contact-card-value">jyothiswaroopreddymula@gmail.com</div>
+            </div>
+          </a>
+          <a href="https://github.com/jyothiswaroopreddy08" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon-wrap">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-label">GitHub</div>
+              <div class="contact-card-value">github.com/jyothiswaroopreddy08</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/jyothiswaroopreddy-mula/" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon-wrap">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-label">LinkedIn</div>
+              <div class="contact-card-value">jyothiswaroopreddy-mula</div>
+            </div>
+          </a>
+          <a href="tel:+919100463437" class="contact-card">
+            <div class="contact-icon-wrap">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-card-label">Phone</div>
+              <div class="contact-card-value">+91 91004 63437</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">JS<span class="logo-dot">.</span></span>
+        <span class="footer-copy">© 2025 Jyothi Swaroop Reddy Mula</span>
+      </div>
+      <div class="footer-right">
+        <span>Built with precision. Deployed with confidence.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button id="scrollTop" class="scroll-top hidden" aria-label="Scroll to top">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15"/></svg>
+  </button>
+
+  <script src="app.js"></script>
 </body>
 </html>
