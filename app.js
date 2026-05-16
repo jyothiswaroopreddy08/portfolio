@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initCounters();
   initSkillBars();
-  initContactForm();
   initScrollTop();
 });
 
@@ -167,16 +166,20 @@ function initCounters() {
 }
 
 function animateCounter(el) {
-  const target = parseInt(el.getAttribute('data-count'), 10);
+  const target = parseFloat(el.getAttribute('data-count'));
+  if (isNaN(target)) return;
+  
   const duration = 1600;
   const start = performance.now();
+  const isDecimal = target % 1 !== 0;
 
   function step(now) {
     const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target);
+    const current = eased * target;
+    el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
     if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
+    else el.textContent = isDecimal ? target.toFixed(1) : target;
   }
 
   requestAnimationFrame(step);
@@ -198,43 +201,8 @@ function initSkillBars() {
   bars.forEach(b => io.observe(b));
 }
 
-/* ─── CONTACT FORM ──────────────────────────────── */
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.btn-submit');
-    const btnText = btn.querySelector('.btn-text');
-    const btnLoading = btn.querySelector('.btn-loading');
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    if (!name || !email || !message) {
-      showNotification('Please fill in all fields.', 'error');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showNotification('Please enter a valid email address.', 'error');
-      return;
-    }
-
-    btnText.classList.add('hidden');
-    btnLoading.classList.remove('hidden');
-    btn.disabled = true;
-
-    // Simulate async submission
-    await new Promise(r => setTimeout(r, 1800));
-
-    showNotification('Message sent! I\'ll get back to you soon.', 'success');
-    form.reset();
-    btnText.classList.remove('hidden');
-    btnLoading.classList.add('hidden');
-    btn.disabled = false;
-  });
-}
+/* ─── CONTACT ───────────────────────────────────── */
+/* Contact section is now display-only with no form submission */
 
 /* ─── SCROLL TOP ─────────────────────────────────── */
 function initScrollTop() {
