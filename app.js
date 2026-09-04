@@ -1,588 +1,404 @@
-// DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
+// ============================================================
+// KNOW ME → LAPTOP EXPERIENCE
+// ============================================================
+const knowMeBtn = document.getElementById('knowMeBtn');
+const laptopOverlay = document.getElementById('laptopOverlay');
+const closeLaptop = document.getElementById('closeLaptop');
+const slideTrack = document.getElementById('slideTrack');
+const slideDotsWrap = document.getElementById('slideDots');
+const slides = Array.from(slideTrack.querySelectorAll('.slide'));
+let currentSlide = 0;
+let slideTimer = null;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => goToSlide(i));
+  slideDotsWrap.appendChild(dot);
+});
+const dots = Array.from(slideDotsWrap.children);
+
+function goToSlide(i) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = i;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function startSlideAutoplay() {
+  clearInterval(slideTimer);
+  slideTimer = setInterval(() => {
+    goToSlide((currentSlide + 1) % slides.length);
+  }, 5000);
+}
+
+function openLaptop() {
+  laptopOverlay.classList.add('open');
+  laptopOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  startSlideAutoplay();
+}
+function closeLaptopFn() {
+  laptopOverlay.classList.remove('open');
+  laptopOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  clearInterval(slideTimer);
+}
+
+knowMeBtn.addEventListener('click', openLaptop);
+closeLaptop.addEventListener('click', closeLaptopFn);
+laptopOverlay.addEventListener('click', (e) => { if (e.target === laptopOverlay) closeLaptopFn(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && laptopOverlay.classList.contains('open')) closeLaptopFn();
 });
 
-function initializeApp() {
-    // Initialize all functionality
-    initThemeToggle();
-    initSmoothScrolling();
-    initScrollAnimations();
-    initContactForm();
-    initScrollToTop();
-    initPipelineAnimation();
-    initTypingAnimation();
-    initParallaxEffects();
-    initExternalLinks();
+// ============================================================
+// CI/CD PIPELINE
+// ============================================================
+const stageData = {
+  commit: {
+    title: 'Commit',
+    tools: 'Git · GitHub',
+    body: [
+      'Every change enters through version control — branching, pull requests, and code review before anything moves further down the pipeline.',
+      'At Infosys, this stage fed directly into a CI/CD system I helped migrate from Jenkins to GitHub Actions, so a commit reliably triggers the same pipeline every time.'
+    ]
+  },
+  build: {
+    title: 'Build',
+    tools: 'Jenkins · GitHub Actions · Docker',
+    body: [
+      'Build automation runs through Jenkins and GitHub Actions, including reusable workflows so the same build logic isn\u2019t rewritten per project.',
+      'Docker containerization was integrated into the delivery lifecycle here — the step that lifted deployment throughput by 25% and made runtime behavior predictable across environments.'
+    ]
+  },
+  test: {
+    title: 'Test',
+    tools: 'Python · TypeScript · Bash',
+    body: [
+      'Automated cross-stack testing frameworks run as validation gates embedded directly in the pipeline, rather than as a manual step after the fact.',
+      'This is the work that reduced post-release defects by 15% — catching problems before they reach production.'
+    ]
+  },
+  scan: {
+    title: 'Scan',
+    tools: 'SonarQube · CodeQL · Megalinter · JFrog Xray',
+    body: [
+      'Static analysis, linting and dependency/artifact scanning run as pipeline gates rather than a final review — SonarQube and CodeQL for code quality and vulnerabilities, Megalinter for consistency, JFrog Xray for artifact risk.',
+      'This work was done in partnership with security and compliance teams to strengthen governance controls and align with industry standards.'
+    ]
+  },
+  publish: {
+    title: 'Publish',
+    tools: 'GitHub Actions · JFrog Xray',
+    body: [
+      'Once a build clears its security and quality gates, it\u2019s versioned and promoted as an artifact — with secrets management and approvals built into the GitHub Actions workflow rather than handled ad hoc.'
+    ]
+  },
+  deploy: {
+    title: 'Deploy',
+    tools: 'Kubernetes · OpenShift · Terraform · AWS / Azure / GCP',
+    body: [
+      'Deployment runs on Kubernetes and OpenShift, provisioned through Terraform-based Infrastructure as Code across AWS, Azure and GCP for predictable, repeatable environments.',
+      'Environment-based deployments and approval gates in GitHub Actions give this stage the same reliability the rest of the pipeline is built for.'
+    ]
+  }
+};
+
+const stages = document.querySelectorAll('.stage');
+const stagePanel = document.getElementById('stagePanel');
+const stagePanelContent = document.getElementById('stagePanelContent');
+const stagePanelClose = document.getElementById('stagePanelClose');
+const pipelinePacket = document.getElementById('pipelinePacket');
+const pipelineTrack = document.getElementById('pipelineTrack');
+const stageOrder = ['commit', 'build', 'test', 'scan', 'publish', 'deploy'];
+
+function openStage(key, index) {
+  const data = stageData[key];
+  stagePanelContent.innerHTML = `
+    <h3>${data.title}</h3>
+    <p class="stage-tools mono small">${data.tools}</p>
+    ${data.body.map(p => `<p class="${p.match(/\d/) ? 'achievement' : ''}">${p}</p>`).join('')}
+  `;
+  stagePanel.hidden = false;
+  stages.forEach(s => s.classList.remove('active'));
+  stages[index].classList.add('active');
+
+  // animate packet along the track
+  const trackWidth = pipelineTrack.offsetWidth;
+  const targetPct = index / (stageOrder.length - 1);
+  pipelinePacket.style.opacity = '1';
+  pipelinePacket.style.left = '0px';
+  pipelinePacket.classList.add('moving');
+  requestAnimationFrame(() => {
+    pipelinePacket.style.left = `${targetPct * trackWidth}px`;
+  });
+  setTimeout(() => { pipelinePacket.style.opacity = '0'; }, 1200);
+
+  stagePanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// Theme Toggle Functionality - Fixed
-function initThemeToggle() {
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('.theme-icon');
-    
-    // Check for saved theme preference or default to 'light'
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-    
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Add transition effect
-        document.body.style.transition = 'all 0.3s ease';
-        setTimeout(() => {
-            document.body.style.transition = '';
-        }, 300);
-    });
-    
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        updateThemeIcon(theme);
-    }
-    
-    function updateThemeIcon(theme) {
-        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
-}
+stages.forEach((btn, index) => {
+  btn.addEventListener('click', () => openStage(btn.dataset.stage, index));
+});
+stagePanelClose.addEventListener('click', () => {
+  stagePanel.hidden = true;
+  stages.forEach(s => s.classList.remove('active'));
+});
 
-// Smooth Scrolling for Navigation Links - Fixed
-function initSmoothScrolling() {
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const href = this.getAttribute('href');
-            
-            if (href && href.startsWith('#')) {
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    const navHeight = document.querySelector('.nav-glass').offsetHeight || 80;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active nav link
-                    document.querySelectorAll('.nav-links a').forEach(navLink => {
-                        navLink.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            }
-        });
-    });
-    
-    // Handle other internal links
-    const internalLinks = document.querySelectorAll('a[href^="#"]:not(.nav-links a)');
-    internalLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            if (href && href.startsWith('#') && href !== '#') {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    const navHeight = document.querySelector('.nav-glass').offsetHeight || 80;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-}
+// ============================================================
+// EFFICIENCY / REUSABLE WORKFLOW DEMO
+// ============================================================
+const cacheToggle = document.getElementById('cacheToggle');
+const cacheFlow = document.getElementById('cacheFlow');
+const cacheStateLabel = document.getElementById('cacheStateLabel');
+const cacheDemo = document.querySelector('.cache-demo');
 
-// External Links Functionality - Fixed
-function initExternalLinks() {
-    // Handle GitHub links
-    const githubLinks = document.querySelectorAll('a[href*="github.com"]');
-    githubLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href) {
-                window.open(href, '_blank', 'noopener,noreferrer');
-            }
-        });
-    });
-    
-    // Handle LinkedIn links
-    const linkedinLinks = document.querySelectorAll('a[href*="linkedin.com"]');
-    linkedinLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href) {
-                window.open(href, '_blank', 'noopener,noreferrer');
-            }
-        });
-    });
-    
-    // Handle email links
-    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-    emailLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href) {
-                window.location.href = href;
-            }
-        });
-    });
-    
-    // Handle Download Resume button
-    const downloadResumeBtn = document.querySelector('a[href="#contact"]');
-    if (downloadResumeBtn && downloadResumeBtn.textContent.includes('Download Resume')) {
-        downloadResumeBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create a mock resume download
-            const resumeData = `
-Alex Thompson - DevOps Engineer Resume
+let cached = false;
+const beforeHTML = cacheFlow.innerHTML;
+const afterHTML = `
+  <div class="cache-node">Pipeline triggered</div>
+  <div class="cache-arrow">↓</div>
+  <div class="cache-node hit">Reusable workflow — Project A</div>
+  <div class="cache-arrow">↓</div>
+  <div class="cache-node hit">Reusable workflow — Project B</div>
+  <div class="cache-arrow">↓</div>
+  <div class="cache-node hit">Reusable workflow — Project C</div>
+  <div class="cache-arrow">↓</div>
+  <div class="cache-node">Build</div>
+`;
 
-CONTACT INFORMATION
-Email: alex.thompson@email.com
-GitHub: https://github.com/alexthompson
-LinkedIn: https://linkedin.com/in/alexthompson
-
-PROFESSIONAL SUMMARY
-Mid-level DevOps Engineer with 4 years of experience in implementing production-grade CI/CD pipelines, managing cloud infrastructure (AWS), and container orchestration using Kubernetes. I specialize in delivering secure, observable, and automated platforms that enable rapid development cycles.
-
-KEY ACHIEVEMENTS
-• 15+ pipelines optimized across teams
-• 3+ AWS environments migrated to IaC
-• Implemented security scanning via CodeQL/Snyk
-
-TECHNICAL SKILLS
-CI/CD: GitHub Actions (Advanced), Jenkins (Intermediate)
-Cloud & IaC: AWS ECS/Lambda (Advanced), Terraform (Advanced), CloudFormation (Intermediate)
-Containers: Docker (Advanced), Kubernetes (Intermediate)
-Monitoring: Prometheus (Intermediate), Grafana (Intermediate), CloudWatch (Advanced)
-Scripting: Python (Advanced), Bash (Advanced)
-Dev Tools: Git (Advanced), GitHub (Advanced), GitLab (Intermediate), VSCode (Advanced)
-
-FEATURED PROJECTS
-1. Multi-Environment CI/CD Pipeline - Reduced deployment time by 70%
-2. AWS Infrastructure Automation - Automated provisioning of 3 production environments
-3. Kubernetes Cluster Management - Achieved 99.9% uptime with auto-scaling
-4. Security-First DevOps - Identified and resolved 150+ security vulnerabilities
-
-Generated on: ${new Date().toLocaleDateString()}
-            `;
-            
-            const blob = new Blob([resumeData], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Alex_Thompson_DevOps_Resume.txt';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-            
-            showNotification('Resume downloaded successfully!', 'success');
-        });
-    }
-}
-
-// Scroll-triggered Animations
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                
-                // Add staggered animation for skill cards and project cards
-                if (entry.target.classList.contains('skills-grid') || 
-                    entry.target.classList.contains('projects-grid')) {
-                    const cards = entry.target.querySelectorAll('.glass-card');
-                    cards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 100);
-                    });
-                }
-            }
-        });
-    }, observerOptions);
-    
-    // Observe all fade-in elements
-    const fadeInElements = document.querySelectorAll('.fade-in');
-    fadeInElements.forEach(element => {
-        observer.observe(element);
-    });
-    
-    // Observe navigation for active link highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const navObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const activeNavLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-                
-                // Remove active class from all nav links
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                });
-                
-                // Add active class to current nav link
-                if (activeNavLink) {
-                    activeNavLink.classList.add('active');
-                }
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    sections.forEach(section => {
-        navObserver.observe(section);
-    });
-}
-
-// Contact Form Handling
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        // Validate form
-        if (!name || !email || !message) {
-            showNotification('Please fill in all fields', 'error');
-            return;
-        }
-        
-        if (!isValidEmail(email)) {
-            showNotification('Please enter a valid email address', 'error');
-            return;
-        }
-        
-        // Show loading state
-        btnText.classList.add('hidden');
-        btnLoading.classList.remove('hidden');
-        submitBtn.disabled = true;
-        
-        // Simulate form submission (replace with actual form handler)
-        setTimeout(() => {
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-            
-            // Reset button state
-            btnText.classList.remove('hidden');
-            btnLoading.classList.add('hidden');
-            submitBtn.disabled = false;
-        }, 2000);
-    });
-    
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-}
-
-// Show Notification Function
-function showNotification(message, type) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification--${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <span class="notification-icon">${type === 'success' ? '✅' : '❌'}</span>
-            <span class="notification-message">${message}</span>
-        </div>
-    `;
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: var(--bg-glass);
-        backdrop-filter: blur(10px);
-        border: 1px solid var(--border-glass);
-        border-radius: 10px;
-        padding: 1rem 1.5rem;
-        z-index: 1001;
-        opacity: 0;
-        transform: translateX(100%);
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-glass);
-        max-width: 350px;
-        color: var(--text-primary);
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Animate in
+cacheToggle.addEventListener('click', () => {
+  cached = !cached;
+  if (cached) {
+    cacheFlow.style.opacity = '0';
     setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Remove after delay
+      cacheFlow.innerHTML = afterHTML;
+      cacheFlow.style.opacity = '1';
+    }, 200);
+    cacheStateLabel.textContent = 'AFTER — ONE DEFINITION, CALLED EVERYWHERE';
+    cacheToggle.textContent = 'Show Before';
+    cacheDemo.classList.add('cached');
+  } else {
+    cacheFlow.style.opacity = '0';
     setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (document.body.contains(notification)) {
-                document.body.removeChild(notification);
-            }
-        }, 300);
-    }, 4000);
-}
+      cacheFlow.innerHTML = beforeHTML;
+      cacheFlow.style.opacity = '1';
+    }, 200);
+    cacheStateLabel.textContent = 'BEFORE — DUPLICATED EFFORT';
+    cacheToggle.textContent = 'Enable Reusable Workflow';
+    cacheDemo.classList.remove('cached');
+  }
+});
+cacheFlow.style.transition = 'opacity 0.2s ease';
 
-// Scroll to Top Button
-function initScrollToTop() {
-    const scrollTopBtn = document.getElementById('scrollTop');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.remove('hidden');
-        } else {
-            scrollTopBtn.classList.add('hidden');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Pipeline Animation
-function initPipelineAnimation() {
-    const pipelineStages = document.querySelectorAll('.pipeline-stage');
-    let currentStage = 0;
-    let pipelineInterval;
-    
-    function animatePipeline() {
-        // Reset all stages
-        pipelineStages.forEach(stage => {
-            const progress = stage.querySelector('.stage-progress');
-            if (progress) {
-                progress.style.width = '0';
-            }
-            stage.classList.remove('active');
-        });
-        
-        // Animate current stage
-        if (pipelineStages[currentStage]) {
-            const currentStageElement = pipelineStages[currentStage];
-            const progress = currentStageElement.querySelector('.stage-progress');
-            
-            currentStageElement.classList.add('active');
-            setTimeout(() => {
-                if (progress) {
-                    progress.style.width = '100%';
-                }
-            }, 100);
-            
-            currentStage = (currentStage + 1) % pipelineStages.length;
-        }
-    }
-    
-    // Start pipeline animation when section is visible
-    const pipelineSection = document.getElementById('pipeline');
-    if (pipelineSection) {
-        const pipelineObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animatePipeline();
-                    pipelineInterval = setInterval(animatePipeline, 3000);
-                } else {
-                    if (pipelineInterval) {
-                        clearInterval(pipelineInterval);
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        pipelineObserver.observe(pipelineSection);
-    }
-}
-
-// Typing Animation for Hero Section
-function initTypingAnimation() {
-    const typingTexts = document.querySelectorAll('.typing-text');
-    
-    // Add cursor effect to the last typing text
-    if (typingTexts.length > 0) {
-        const lastText = typingTexts[typingTexts.length - 1];
-        
-        function addCursor() {
-            lastText.style.borderRight = '3px solid var(--text-accent)';
-            lastText.style.animation = 'typing 1s steps(40) infinite, fadeInUp 0.8s ease-out 1s both';
-        }
-        
-        setTimeout(addCursor, 2000);
-        
-        // Remove cursor after animation
-        setTimeout(() => {
-            lastText.style.borderRight = 'none';
-        }, 5000);
-    }
-}
-
-// Parallax Effects
-function initParallaxEffects() {
-    const heroBackground = document.querySelector('.hero-background');
-    
-    const parallaxHandler = debounce(function() {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        
-        if (heroBackground) {
-            heroBackground.style.transform = `translateY(${parallax}px)`;
-        }
-    }, 10);
-    
-    window.addEventListener('scroll', parallaxHandler);
-}
-
-// Keyboard Navigation
-document.addEventListener('keydown', function(e) {
-    // ESC key functionality
-    if (e.key === 'Escape') {
-        // Close any open modals or reset states
-        const activeElements = document.querySelectorAll('.active');
-        activeElements.forEach(element => {
-            element.classList.remove('active');
-        });
-    }
-    
-    // Arrow key navigation for pipeline
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        const pipelineStages = document.querySelectorAll('.pipeline-stage');
-        const focusedStage = document.activeElement;
-        
-        if (pipelineStages.length > 0 && Array.from(pipelineStages).includes(focusedStage)) {
-            e.preventDefault();
-            const currentIndex = Array.from(pipelineStages).indexOf(focusedStage);
-            let nextIndex;
-            
-            if (e.key === 'ArrowRight') {
-                nextIndex = (currentIndex + 1) % pipelineStages.length;
-            } else {
-                nextIndex = (currentIndex - 1 + pipelineStages.length) % pipelineStages.length;
-            }
-            
-            pipelineStages[nextIndex].focus();
-        }
-    }
+// ============================================================
+// DEVSECOPS GATE
+// ============================================================
+const secGateBtn = document.getElementById('secGateBtn');
+const secopsPanel = document.getElementById('secopsPanel');
+secGateBtn.addEventListener('click', () => {
+  secopsPanel.hidden = !secopsPanel.hidden;
 });
 
-// Debounce function for performance optimization
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
+// ============================================================
+// TECH CONSTELLATION
+// ============================================================
+const constDescriptions = {
+  'Jenkins': 'Ran the original CI/CD pipeline before I led its migration to GitHub Actions, and later became the target of a custom Python monitoring engine I built to catch bottlenecks proactively.',
+  'GitHub Actions': 'The system I migrated an enterprise CI/CD pipeline onto — reusable workflows, environment-based deployments, approvals and secrets management.',
+  'Harness': 'Continuous delivery and GitOps tooling — certified in both CD/GitOps and CI development.',
+  'Docker': 'Integrated into the application delivery lifecycle, lifting deployment throughput by 25% and standardizing runtime behavior.',
+  'Kubernetes': 'Target environment for containerized deployments, paired with Terraform-provisioned infrastructure.',
+  'OpenShift': 'Enterprise container orchestration platform used alongside Kubernetes for deployment.',
+  'AWS': 'Primary cloud platform for infrastructure provisioning, standardized through reusable Terraform configurations.',
+  'Terraform': 'Infrastructure as Code across AWS, Azure and GCP — the layer that makes provisioning predictable and repeatable.',
+  'Python': 'Used to build a monitoring engine integrated with Jenkins APIs, and to automate cross-stack testing.',
+  'Bash': 'Scripting for pipeline automation and cross-stack test frameworks.',
+  'PowerShell': 'Scripting for automation across Windows-based environments.',
+  'Groovy': 'Jenkins pipeline scripting.',
+  'YAML': 'Pipeline and workflow configuration across Jenkins and GitHub Actions.',
+  'SonarQube': 'Static code analysis run as a gate inside the pipeline, not a manual review step.',
+  'CodeQL': 'Automated vulnerability scanning integrated into the DevSecOps toolchain.',
+  'Megalinter': 'Linting enforcement for consistent code quality across projects.',
+  'JFrog Xray': 'Artifact and dependency scanning before promotion to production.',
+  'Git': 'Version control foundation for every pipeline this portfolio describes.',
+  'GitHub': 'Repository hosting and the trigger point for CI/CD automation.'
+};
+
+const groupRelations = {
+  cicd: ['containers', 'vcs'],
+  containers: ['cicd', 'cloud', 'iac'],
+  cloud: ['iac', 'containers'],
+  iac: ['cloud', 'containers'],
+  scripting: ['cicd', 'security'],
+  security: ['cicd', 'scripting'],
+  vcs: ['cicd']
+};
+
+const constellation = document.getElementById('constellation');
+const constDetail = document.getElementById('constDetail');
+const tags = document.querySelectorAll('.tag');
+
+tags.forEach(tag => {
+  tag.addEventListener('click', () => {
+    const alreadySelected = tag.classList.contains('selected');
+    tags.forEach(t => t.classList.remove('selected'));
+    constellation.classList.remove('dimmed');
+    document.querySelectorAll('.const-group').forEach(g => g.classList.remove('related'));
+
+    if (alreadySelected) {
+      constDetail.hidden = true;
+      return;
+    }
+
+    tag.classList.add('selected');
+    const group = tag.closest('.const-group');
+    const groupKey = group.dataset.group;
+    constellation.classList.add('dimmed');
+    group.classList.add('related');
+    (groupRelations[groupKey] || []).forEach(rel => {
+      const relGroup = constellation.querySelector(`[data-group="${rel}"]`);
+      if (relGroup) relGroup.classList.add('related');
+    });
+
+    const desc = constDescriptions[tag.textContent] || '';
+    constDetail.innerHTML = `<strong>${tag.textContent}</strong> — ${desc}`;
+    constDetail.hidden = false;
+  });
+});
+
+// ============================================================
+// TIMELINE
+// ============================================================
+const timelineNodes = document.querySelectorAll('.timeline-node');
+timelineNodes.forEach(node => {
+  node.addEventListener('click', () => {
+    const i = node.dataset.node;
+    const detail = document.querySelector(`.timeline-detail[data-detail="${i}"]`);
+    const isOpen = !detail.hidden;
+    detail.hidden = isOpen;
+    node.classList.toggle('open', !isOpen);
+  });
+});
+
+// ============================================================
+// BEYOND THE TERMINAL — sequential reveal
+// ============================================================
+const beyondItems = document.querySelectorAll('.beyond-item');
+
+beyondItems.forEach((item, idx) => {
+  const trigger = item.querySelector('.beyond-trigger');
+  const reveal = item.querySelector('.beyond-reveal');
+  trigger.addEventListener('click', () => {
+    if (!reveal.hidden) return;
+    reveal.hidden = false;
+    const next = beyondItems[idx + 1];
+    if (next) next.hidden = false;
+  });
+});
+
+// music player
+const playBtn = document.getElementById('playBtn');
+const audioEl = document.getElementById('audioEl');
+if (playBtn) {
+  playBtn.addEventListener('click', () => {
+    if (audioEl.paused) {
+      audioEl.play().catch(() => {
+        playBtn.textContent = '▶';
+      });
+      playBtn.textContent = '❚❚';
+    } else {
+      audioEl.pause();
+      playBtn.textContent = '▶';
+    }
+  });
+  audioEl.addEventListener('ended', () => { playBtn.textContent = '▶'; });
 }
 
-// Add focus styles and additional functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .pipeline-stage:focus {
-            outline: 2px solid var(--text-accent);
-            outline-offset: 4px;
-            border-radius: 10px;
-        }
-        
-        .nav-links a:focus,
-        .btn:focus,
-        .theme-toggle:focus {
-            outline: 2px solid var(--text-accent);
-            outline-offset: 2px;
-        }
-        
-        .active {
-            color: var(--text-accent) !important;
-        }
-        
-        .active::after {
-            width: 100% !important;
-        }
-        
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-primary);
-        }
-        
-        .notification-icon {
-            font-size: 1.25rem;
-        }
-        
-        .notification-message {
-            font-weight: 500;
-        }
-        
-        .loaded {
-            opacity: 1;
-        }
+// art lightbox
+const artOpen = document.getElementById('artOpen');
+if (artOpen) {
+  artOpen.addEventListener('click', () => {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <button class="lightbox-close" aria-label="Close">×</button>
+      <div class="lightbox-content">PLACEHOLDER — replace assets/digital-art.jpg<br>with your artwork to display it fullscreen here.</div>
     `;
-    document.head.appendChild(style);
-});
-
-// Performance and UX improvements
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-    
-    // Hide any loading indicators
-    const loadingElements = document.querySelectorAll('.loading');
-    loadingElements.forEach(element => {
-        element.style.display = 'none';
-    });
-});
-
-// Error handling for failed resource loads
-window.addEventListener('error', function(e) {
-    console.error('Resource failed to load:', e.target);
-    
-    // Fallback for failed external resources
-    if (e.target.tagName === 'LINK' && e.target.rel === 'stylesheet') {
-        // Fallback for failed Google Fonts
-        document.body.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    document.body.appendChild(lightbox);
+    requestAnimationFrame(() => lightbox.classList.add('open'));
+    function close() {
+      lightbox.classList.remove('open');
+      setTimeout(() => lightbox.remove(), 250);
     }
-});
+    lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  });
+}
 
-// Add resize handler for responsive adjustments
-window.addEventListener('resize', debounce(function() {
-    // Recalculate any size-dependent animations
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection && window.innerWidth <= 768) {
-        // Mobile-specific adjustments
-        heroSection.style.minHeight = window.innerHeight + 'px';
+// ============================================================
+// TERMINAL EASTER EGG
+// ============================================================
+const termTrigger = document.getElementById('termTrigger');
+const terminalOverlay = document.getElementById('terminalOverlay');
+const terminalClose = document.getElementById('terminalClose');
+const terminalBody = document.getElementById('terminalBody');
+
+const terminalScript = [
+  { prompt: '$ whoami', delay: 0 },
+  { line: 'Jyothi Swaroop Reddy Mula — DevOps Engineer', delay: 500 },
+  { prompt: '$ experience', delay: 1100 },
+  { line: '4.8 years, across consulting and enterprise engineering', delay: 1600 },
+  { prompt: '$ philosophy', delay: 2200 },
+  { line: 'Automate. Secure. Optimize. Deploy.', delay: 2700 }
+];
+
+let terminalOpened = false;
+
+function runTerminal() {
+  terminalBody.innerHTML = '';
+  terminalScript.forEach(step => {
+    setTimeout(() => {
+      const line = document.createElement('div');
+      if (step.prompt) {
+        line.innerHTML = `<span class="prompt">${step.prompt}</span>`;
+      } else {
+        line.textContent = step.line;
+      }
+      terminalBody.appendChild(line);
+    }, step.delay);
+  });
+  setTimeout(() => {
+    const caret = document.createElement('span');
+    caret.className = 'caret';
+    terminalBody.appendChild(caret);
+  }, 3000);
+}
+
+function openTerminal() {
+  terminalOverlay.hidden = false;
+  runTerminal();
+}
+function closeTerminal() {
+  terminalOverlay.hidden = true;
+}
+
+termTrigger.addEventListener('click', openTerminal);
+terminalClose.addEventListener('click', closeTerminal);
+terminalOverlay.addEventListener('click', (e) => { if (e.target === terminalOverlay) closeTerminal(); });
+
+// typed "sudo whoami" anywhere on the page
+let typedBuffer = '';
+document.addEventListener('keydown', (e) => {
+  if (e.key.length === 1) {
+    typedBuffer = (typedBuffer + e.key).slice(-14);
+    if (typedBuffer.includes('sudo whoami')) {
+      openTerminal();
+      typedBuffer = '';
     }
-}, 250));
+  }
+  if (e.key === 'Escape' && !terminalOverlay.hidden) closeTerminal();
+});
